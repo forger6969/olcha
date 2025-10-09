@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "raleway";
+}
+
+.container {
+    max-width: 100%;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #da002b;
+    width: 100%;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-left-btn {
+    width: 131px;
+    height: 32px;
+    background-color: white;
+    color: #da002b;
+    border-radius: 10px;
+    font-size: 16px;
+    border: none;
+    font-weight: 600;
+    transition: 300ms all ease;
+    border: 2px solid white;
+}
+
+.header-left-btn:hover {
+    transition: 300ms all ease;
+    background-color: transparent;
+    color: white;
+}
+
+
+.page-map-link {
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-telephone-number {
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.sell-from-olcha_btn {
+    width: 191px;
+    height: 40px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    transition: 300ms all ease;
+}
+
+
+.sell-from-olcha_btn:hover {
+    transition: 300ms all ease;
+    background-color: white;
+    border: none;
+    color: #da002b;
+}
+
+.language-select_box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-right: 1px solid #cac7c7;
+    border-left: 1px solid #cac7c7;
+}
+
+.select-language {
+    font-weight: 500;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+}
+
+.main-wrapper-1_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.nav-btn {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+    gap: 5px;
+}
+
+.nav-btn img {
+    width: 30px;
+}
+
+.search_btn {
+    width: 50px;
+    height: 50px;
+}
+
+.search_btn img {
+    width: 100%;
+}
+
+.nav-catalog {
+    width: 166px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 19px;
+    color: black;
+    padding: 5px;
+    transition: 300ms all ease;
+}
+
+.nav-catalog img {
+    width: 35px;
+}
+
+.nav-logo {
+    width: 100px;
+}
+
+.nav-catalog:hover {
+    transition: 300ms all ease;
+    border: #da002b 2px solid;
+    color: #da002b;
+}
+
+.burger {
+    transition: 300ms all ease;
+}
+
+.nav-catalog:hover .burger {
+    transition: 300ms all ease;
+    stroke: #da002b;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-center {
+    display: flex;
+    margin-left: 50px;
+}
+
+.serach_input {
+    width: 644px;
+    height: 44px;
+    padding: 11px 24px;
+    border-radius: 10px;
+    background-color: #e8e6e6bf;
+    border: none;
+    font-size: 17px;
+    outline: none;
+}
+
+.search_btn {
+    width: 73px;
+    height: 38px;
+    background-color: #da002b;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    right: 76px;
+    top: 2.5px;
+    cursor: pointer;
+}
+
+.search_btn img {
+    width: 30px;
+}

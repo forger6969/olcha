@@ -4,15 +4,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <title>Document</title>
 </head>
 
 <body>
 
-    <h1>Hello Worl</h1>
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
 
-    <script src="./main.js"></script>
+                <div class="header-left">
+                    <button id="credit" class="header-left-btn">0% Рассрочка</button>
+                    <button id="skidka" class="header-left-btn">Скидки</button>
+                    <button id="rosigrish" class="header-left-btn">Розыгрыши</button>
+
+                    <p class="page-map-link">Карта сайта</p>
+                </div>
+
+                <div class="header-right">
+                    <p class="header-telephone-number">+998(71) 202 20 21</p>
+                    <button class="sell-from-olcha_btn">Продавайте на olcha</button>
+
+                    <div class="language-select_box">
+                        <p class="select-language">Узб</p>
+                        <p class="select-language">O'z</p>
+                        <p class="select-language">Рус</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="nav-banner_section">
+            <div class="container">
+                <div class="main-wrapper-1_div">
+
+                    <div class="nav-left">
+
+                        <img class="nav-logo" src="./images/plus.lRzD4Jf7.png" alt="">
+                        <button class="nav-catalog"><svg width="35px" height="35px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path class="burger" d="M4 18L20 18" stroke="#000000" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <path class="burger" d="M4 12L20 12" stroke="#000000" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <path class="burger" d="M4 6L20 6" stroke="#000000" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Каталог</button>
+                    </div>
+
+                    <form class="nav-center">
+                        <input class="serach_input" placeholder="Поиск по каталогу" type="text">
+                        <button type="button" class="search_btn"><img src="./icons/search-svgrepo-com.svg"
+                                alt=""></button>
+                    </form>
+
+                    <div class="nav-right">
+
+                        <button class="nav-btn">
+                            <img src="./icons/heart-svgrepo-com.svg" alt="">
+                            Избранное
+                        </button>
+
+                        <button class="nav-btn">
+                            <img src="./icons/basket-svgrepo-com.svg" alt="">
+                            Корзина
+                        </button>
+
+                        <button class="nav-btn">
+                            <img src="./icons/user-alt-1-svgrepo-com.svg" alt="">
+                            Войти
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="./src/main.js"></script>
 </body>
 
 </html>
