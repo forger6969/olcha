@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
     margin: 0;
@@ -11,7 +11,7 @@
 
 .container {
     max-width: 100%;
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -19,6 +19,7 @@
     background-color: #da002b;
     width: 100%;
 }
+
 
 .header-wrapper {
     display: flex;
@@ -112,6 +113,18 @@
     align-items: center;
     justify-content: center;
     padding-top: 20px;
+    background-color: white;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    transition: 300ms all ease;
+}
+
+.main-wrapper-1_div.fixed {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    transition: 300ms all ease;
 }
 
 .nav-right {
@@ -130,10 +143,26 @@
     font-size: 14px;
     font-weight: 600;
     gap: 5px;
+    transition: 300ms all ease;
+    cursor: pointer;
 }
 
 .nav-btn img {
     width: 30px;
+}
+
+.nav-btn:hover {
+    transition: 300ms all ease;
+    color: #da002b;
+}
+
+.svg {
+    transition: 300ms all ease;
+}
+
+.nav-btn:hover .svg {
+    transition: 300ms all ease;
+    stroke: #da002b;
 }
 
 .search_btn {
@@ -217,8 +246,239 @@
     right: 76px;
     top: 2.5px;
     cursor: pointer;
+    transition: 300ms all ease;
 }
 
 .search_btn img {
     width: 30px;
+}
+
+.swiper {
+    border-radius: 10px;
+    width: 1106px;
+}
+
+.main-wrapper-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 50px;
+}
+
+.product-of-day-box {
+    height: 382px;
+    width: 304px;
+    border: 3px solid #da002b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-of-day-item {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111111;
+}
+
+.time {
+    border-radius: 6px;
+    border: 1px solid #e8e8e8;
+    padding: 2px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    border-radius: 50%;
+    color: #da002b !important;
+    background-color: #fff !important;
+    width: 35px !important;
+    height: 35px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease;
+    opacity: 0;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 19px !important;
+    font-weight: 900;
+}
+
+
+.swiper:hover .swiper-button-next {
+    opacity: 1;
+}
+
+.swiper:hover .swiper-button-prev {
+    opacity: 1;
+}
+
+
+.swiper-pagination-bullet-active {
+    background: #da002b !important;
+}
+
+.card {
+    background-color: white;
+    width: 218px;
+    height: 510px, fit-content;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.card-product-img {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #efeded;
+}
+
+.card-wrapper {
+    background-color: #da002b;
+    width: 100%;
+    border-radius: 10px;
+    height: fit-content;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 50px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    transition: 300ms all ease;
+}
+
+.card-product-item {
+    font-family: "roboto";
+    font-weight: 500;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.card-product-price {
+    color: #da002b;
+    font-family: "roboto";
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.card-product-price-skidka {
+    color: #cac7c7;
+    font-family: "roboto";
+    text-decoration: line-through;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.card-product-price-rassrochka {
+    background-color: rgb(250, 220, 27);
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-family: "roboto";
+    font-weight: 500;
+    font-size: 14px;
+    color: #252525;
+}
+
+.add-basket-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-right: 2px;
+    transition: 300ms all ease;
+}
+
+.add-basket-btn img {
+    width: 20px;
+}
+
+.buy-rassrochka-btn {
+    width: 130px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #da002b;
+    font-weight: 500;
+    font-size: 17px;
+    color: #da002b;
+    background-color: transparent;
+    transition: 300ms all ease;
+}
+
+.card-btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    transition: 300ms all ease;
+}
+
+.buy-rassrochka-btn:hover {
+    background-color: #da002c14;
+    transition: 300ms all ease;
+}
+
+.add-basket-btn:hover {
+    background-color: rgb(232, 232, 232);
+}
+
+.reklam-banner {
+    margin: 0 auto;
+    width: 100%;
+    transition: 300ms all ease;
+    margin-top: 50px;
+}
+
+.reklam-banner:hover {
+    transition: 300ms all ease;
+    transform: scale(1.02);
+
+}
+
+.card-discount {
+    background-color: #da002b;
+    border-radius: 6px;
+    padding: 4px;
+    color: white;
+    font-family: "roboto";
+    font-weight: 500;
+    width: fit-content;
+    position: absolute;
+}
+
+.reveal-discount-products {
+    background-color: white;
+    border-radius: 100%;
+    padding: 4px 5px;
+    position: absolute;
+    bottom: -960px;
+    right: 100px;
+    border: none;
+    box-shadow: 0 0 5px 1px white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.reveal-discount-products img {
+    transform: rotate(180deg);
 }
