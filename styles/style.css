@@ -482,3 +482,350 @@
 .reveal-discount-products img {
     transform: rotate(180deg);
 }
+
+.smartphone-card {
+    width: 278px;
+    height: fit-content;
+    max-height: 583px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+}
+
+.product-img-smartphone {
+    width: 100%;
+    background-color: #efeded;
+    border-radius: 10px;
+}
+
+.product-name-smartphone {
+    font-weight: 500;
+    font-size: 20px;
+    padding-left: 8px;
+}
+
+.product-price-smartphone {
+    font-family: "roboto";
+    font-weight: 600;
+    font-size: 21px;
+    color: black;
+}
+
+.product-rassrochka-price-smartphone {
+    background-color: rgb(250, 220, 27);
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-family: "roboto";
+    font-weight: 500;
+    font-size: 14px;
+    color: #252525;
+}
+
+.smartphone-card-btn-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.smartphone-card-btn-box .buy-rassrochka-btn {
+    width: 190px;
+}
+
+.smartphone-card-price-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-left: 8px;
+}
+
+.smartphones-item {
+    font-family: "roboto";
+    font-weight: 600;
+    font-size: 35px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.smartphone-cards,
+.sport-cards,
+.apples-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.login-box {
+    position: fixed;
+    top: 200px;
+    left: 600px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 1000;
+    padding: 10px;
+    transition: 300ms all ease;
+}
+
+.login-box.active {
+    opacity: 1;
+    width: 400px;
+    height: 300px;
+    transition: 300ms all ease;
+}
+
+.login-item {
+    font-family: "roboto";
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding-top: 20px;
+}
+
+
+.emailInpit,
+.passwordInput {
+    width: 320px;
+    border: 2px solid #adadad;
+    border-radius: 10px;
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: black;
+    font-size: 20px;
+    outline: none;
+}
+
+.privacyText {
+    color: #252525;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.privacyBtn {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    accent-color: #da002b;
+}
+
+.loginBtn {
+    background-color: #da002b;
+    width: 320px;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 300ms all ease;
+    opacity: 0.4;
+    border: 2px solid #da002b;
+}
+
+.loginBtn:hover {
+    background-color: white;
+    border: 2px solid #da002b;
+    color: #da002b;
+    transition: 300ms all ease;
+}
+
+.close-login-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.content.login {
+    backdrop-filter: brightness(80%);
+    filter: brightness(80%);
+}
+
+.notification {
+    position: relative;
+    background: #333;
+    color: white;
+    border-radius: 8px;
+    margin: 8px 0;
+    width: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 40px;
+    padding: 15px;
+    font-size: 14px;
+    transition: 300ms all ease;
+    cursor: pointer;
+}
+
+.notification.none {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.poloska {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 3px;
+    width: 100%;
+    background: #3498db;
+    animation: shrink 5s linear forwards;
+}
+
+@keyframes shrink {
+    from {
+        right: 0;
+        width: 100%;
+    }
+
+    to {
+        right: 100%;
+        width: 0;
+    }
+}
+
+.notificationsBox {
+    position: fixed;
+    top: 60px;
+    right: 5px;
+    width: 320px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.bannerSport {
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.search-page {
+    background-color: white;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1002;
+    transition: 300ms all ease;
+}
+
+.search-page.active {
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    overflow-y: scroll;
+    transition: 300ms all ease;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #adadad;
+    padding: 20px;
+    margin: 0 auto;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.searchInput {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: "roboto";
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 50px;
+}
+
+.search-btn {
+    width: 73px;
+    height: 38px;
+    background-color: #da002b;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 300ms all ease;
+}
+
+.search-btn img {
+    width: 30px;
+}
+
+.btn-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.close-search {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.popular-products-item {
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.products {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.search-cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+}
+
+.korzina-count {
+    background-color: #da002b;
+    border-radius: 100%;
+    padding: 0 6px;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 4px
+}
+
+.korzina-box-box {
+    position: relative;
+}
