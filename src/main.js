@@ -1,3 +1,4 @@
+
 const userNameElement = document.querySelector(`.login-text`)
 
 if (localStorage.getItem(`loginUser`)) {
@@ -43,12 +44,14 @@ async function getProducts() {
         console.log(res);
         let resProducts = res.products
 
-
         function renderCards(array, container) {
 
             let appleBox = document.querySelector(container)
             appleBox.innerHTML = ``
             array.forEach(aProd => {
+
+                let basketStorage = JSON.parse(localStorage.getItem(`basket`)) || []
+                let findRenderingProduct = basketStorage.find(find => find.product.id === aProd.id)
 
                 let theRealIndex = resProducts.indexOf(aProd)
                 console.log(theRealIndex);
@@ -76,7 +79,68 @@ async function getProducts() {
                         <div class="smartphone-card-btn-box">
                             <button data-index="${theRealIndex}" class="add-basket-btn"><img src="./icons/basket-svgrepo-com.svg" alt=""></button>
                             <button class="buy-rassrochka-btn">В рассрочку</button>
-                        </div>`
+                        </div>
+                        
+                        <div class="add-count-btns">
+                    <button class="minus"><img src="./icons/minus-svgrepo-com.svg" alt=""></button>
+                    <p class="count"></p>
+                    <button class="plus"><img src="./icons/plus-large-svgrepo-com.svg" alt=""></button>
+                </div>
+                        `
+
+                let count = appleCard.querySelector(`.count`)
+                let addCountsBtn = appleCard.querySelector('.add-count-btns')
+                let btnsBox = appleCard.querySelector(`.smartphone-card-btn-box`)
+                let plusBtn = appleCard.querySelector(`.plus`)
+                let minusBtn = appleCard.querySelector(`.minus`)
+
+                if (findRenderingProduct) {
+                    addCountsBtn.classList.add(`active`)
+                    btnsBox.style.display = `none`
+
+                    plusBtn.onclick = () => {
+
+                        basketStorage.map(basket => {
+                            if (basket.product.id === findRenderingProduct.product.id) {
+                                basket.count++
+                                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+
+                                count.textContent = basket.count
+                            }
+                        })
+                        console.log(basketStorage);
+
+                    }
+                    minusBtn.onclick = () => {
+                        let minusText = +count.textContent
+                        console.log(minusText);
+
+
+                        if (minusText <= 1) {
+                            addCountsBtn.classList.remove(`active`)
+                            btnsBox.style.display = `flex`
+
+                            let findAddedProductCount = basketStorage.filter(find => findRenderingProduct.product.id === find.product.id)
+                            console.log(findAddedProductCount);
+                            basketStorage = basketStorage.filter(basket => basket.product.id !== findRenderingProduct.product.id)
+                            console.log(basketStorage);
+                            localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                        }
+
+                        basketStorage.map(basket => {
+                            if (basket.product.id === findRenderingProduct.product.id) {
+                                basket.count--
+                                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+
+                                count.textContent = basket.count
+                            }
+                        })
+                        console.log(basketStorage);
+                    }
+
+                    count.textContent = findRenderingProduct.count
+
+                }
 
                 appleBox.append(appleCard)
             })
@@ -129,6 +193,12 @@ async function getProducts() {
                             <button class="add-basket-btn"><img src="./icons/basket-svgrepo-com.svg" alt=""></button>
                             <button class="buy-rassrochka-btn">В рассрочку</button>
                         </div>
+
+                        <div class="add-count-btns">
+                    <button class="minus"><img src="./icons/minus-svgrepo-com.svg" alt=""></button>
+                    <p class="count"></p>
+                    <button class="plus"><img src="./icons/plus-large-svgrepo-com.svg" alt=""></button>
+                </div>
             `
             cardBox.append(card)
         });
@@ -158,25 +228,84 @@ async function getProducts() {
 
         })
 
+
         let addProductBtn = document.querySelectorAll(`.add-basket-btn`)
         addProductBtn.forEach(btn => {
             btn.addEventListener(`click`, () => {
 
                 let productsCount = document.querySelector('.korzina-count')
                 let basketStorage = JSON.parse(localStorage.getItem(`basket`)) || []
+                console.log(`storage:`, basketStorage);
+
 
                 productsCount.textContent = basketStorage.length
-
 
                 const productIndex = btn.getAttribute(`data-index`)
                 console.log(resProducts[productIndex]);
                 let addedProduct = resProducts[productIndex]
 
-                basketStorage.push(addedProduct)
-                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                let checkBasketStorageInPush = basketStorage.find(check => check.product.id === addedProduct.id)
+                console.log(basketStorage);
+
+                if (!checkBasketStorageInPush) {
+                    basketStorage.push({ product: addedProduct, count: 1 })
+                    localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                }
+
+                let card = btn.closest('.smartphone-card')
+                let addCountsBtn = card.querySelector('.add-count-btns')
+                let btnsBox = card.querySelector(`.smartphone-card-btn-box`)
+                let plusBtn = addCountsBtn.querySelector(`.plus`)
+                let minusBtn = addCountsBtn.querySelector(`.minus`)
+                let count = addCountsBtn.querySelector(`.count`)
+
+                count.textContent = 1
+                addCountsBtn.classList.add(`active`)
+                btnsBox.style.display = `none`
+
+                plusBtn.onclick = () => {
+
+                    basketStorage.map(basket => {
+                        if (basket.product.id === addedProduct.id) {
+                            basket.count++
+                            localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+
+                            count.textContent = basket.count
+                        }
+                    })
+                    console.log(basketStorage);
+
+                }
+                minusBtn.onclick = () => {
+                    let minusText = +count.textContent
+                    console.log(minusText);
+
+
+                    if (minusText <= 1) {
+                        addCountsBtn.classList.remove(`active`)
+                        btnsBox.style.display = `flex`
+
+                        let findAddedProductCount = basketStorage.filter(find => addedProduct.id === find.product.id)
+                        console.log(findAddedProductCount);
+                        basketStorage = basketStorage.filter(basket => basket.product.id !== addedProduct.id)
+                        console.log(basketStorage);
+                        localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                    }
+
+                    basketStorage.map(basket => {
+                        if (basket.product.id === addedProduct.id) {
+                            basket.count--
+                            localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+
+                            count.textContent = basket.count
+                        }
+                    })
+                    console.log(basketStorage);
+                }
 
             })
         })
+
 
     }
     catch (err) {
@@ -283,18 +412,18 @@ async function usersGET() {
 
 usersGET()
 
-let timeBox = document.querySelector(`.time-text`)
+// let timeBox = document.querySelector(`.tim3e-text`)
 
-setInterval(() => {
-    let date = new Date()
-    timeBox.innerHTML = `
-                            <span class="time" id="hour">${date.getHours()}</span>
-                            :
-                            <span class="time" id="minute">${date.getMinutes()}</span>
-                            :
-                            <span class="time" id="secund">${date.getSeconds()}</span>
-        `
-}, 1000);
+// setInterval(() => {
+//     let date = new Date()
+//     timeBox.innerHTML = `
+//                             <span class="time" id="hour">${date.getHours()}</span>
+//                             :
+//                             <span class="time" id="minute">${date.getMinutes()}</span>
+//                             :
+//                             <span class="time" id="secund">${date.getSeconds()}</span>
+//         `
+// }, 1000);
 
 const swiper = new Swiper('.swiper', {
     loop: true,

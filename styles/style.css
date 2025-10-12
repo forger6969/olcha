@@ -571,6 +571,7 @@
     z-index: 1000;
     padding: 10px;
     transition: 300ms all ease;
+    visibility: hidden;
 }
 
 .login-box.active {
@@ -578,6 +579,7 @@
     width: 400px;
     height: 300px;
     transition: 300ms all ease;
+    visibility: visible;
 }
 
 .login-item {
@@ -828,4 +830,34 @@
 
 .korzina-box-box {
     position: relative;
+}
+
+.add-count-btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: none;
+    transition: 300ms all ease;
+}
+
+.add-count-btns.active{
+    display: flex;
+    transition: 300ms all ease;
+}
+
+.minus,
+.plus {
+    color: rgb(211, 211, 211);
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    transition: 300ms all ease;
+}
+
+.count {
+    font-size: 20px;
 }

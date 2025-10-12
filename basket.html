@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="./styles/basket.css">
     <link rel="shortcut icon"
         href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ6D_Xhna1YeAer6KgNktEP1V5PvKHAc_kiA&s"
@@ -13,7 +14,167 @@
 
 <body>
 
-    <div class="apples-cards"></div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-wrapper">
+
+                <div class="header-left">
+                    <button id="credit" class="header-left-btn">0% Рассрочка</button>
+                    <button id="skidka" class="header-left-btn">Скидки</button>
+                    <button id="rosigrish" class="header-left-btn">Розыгрыши</button>
+
+                    <p class="page-map-link">Карта сайта</p>
+                </div>
+
+                <div class="header-right">
+                    <p class="header-telephone-number">+998(71) 202 20 21</p>
+                    <button class="sell-from-olcha_btn">Продавайте на olcha</button>
+
+                    <div class="language-select_box">
+                        <p class="select-language">Узб</p>
+                        <p class="select-language">O'z</p>
+                        <p class="select-language">Рус</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+
+
+    <main class="main">
+        <section class="nav-banner_section">
+
+            <div class="main-wrapper-1_div">
+
+                <div class="nav-left">
+
+                    <a href="./index.html">
+                        <img class="nav-logo" src="./images/plus.lRzD4Jf7.png" alt="">
+                    </a>
+                    <button class="nav-catalog"><svg width="35px" height="35px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path class="burger" d="M4 18L20 18" stroke="#000000" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path class="burger" d="M4 12L20 12" stroke="#000000" stroke-width="2"
+                                stroke-linecap="round" />
+                            <path class="burger" d="M4 6L20 6" stroke="#000000" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        Каталог</button>
+                </div>
+
+                <form class="nav-center">
+                    <input class="serach_input" placeholder="Поиск по каталогу" type="text">
+                    <button type="button" class="search_btn"><img src="./icons/search-svgrepo-com.svg" alt=""></button>
+                </form>
+
+                <div class="nav-right">
+
+                    <button class="nav-btn">
+                        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path class="svg" fill-rule="evenodd" clip-rule="evenodd"
+                                d="M12 6.00019C10.2006 3.90317 7.19377 3.2551 4.93923 5.17534C2.68468 7.09558 2.36727 10.3061 4.13778 12.5772C5.60984 14.4654 10.0648 18.4479 11.5249 19.7369C11.6882 19.8811 11.7699 19.9532 11.8652 19.9815C11.9483 20.0062 12.0393 20.0062 12.1225 19.9815C12.2178 19.9532 12.2994 19.8811 12.4628 19.7369C13.9229 18.4479 18.3778 14.4654 19.8499 12.5772C21.6204 10.3061 21.3417 7.07538 19.0484 5.17534C16.7551 3.2753 13.7994 3.90317 12 6.00019Z"
+                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Избранное
+                    </button>
+
+                    <div class="korzina-box-box">
+
+                        <p class="korzina-count">0</p>
+
+                        <button class="nav-btn">
+                            <svg fill="#000000" width="30px" height="30px" viewBox="0 0 32 32" version="1.1"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path class="svg"
+                                    d="M31.739 8.875c-0.186-0.264-0.489-0.422-0.812-0.422h-21.223l-1.607-5.54c-0.63-2.182-2.127-2.417-2.741-2.417h-4.284c-0.549 0-0.993 0.445-0.993 0.993s0.445 0.993 0.993 0.993h4.283c0.136 0 0.549 0 0.831 0.974l5.527 20.311c0.12 0.428 0.511 0.724 0.956 0.724h13.499c0.419 0 0.793-0.262 0.934-0.657l4.758-14.053c0.11-0.304 0.064-0.643-0.122-0.907zM25.47 22.506h-12.046l-3.161-12.066h19.253zM23.5 26.504c-1.381 0-2.5 1.119-2.5 2.5s1.119 2.5 2.5 2.5 2.5-1.119 2.5-2.5c0-1.381-1.119-2.5-2.5-2.5zM14.5 26.504c-1.381 0-2.5 1.119-2.5 2.5s1.119 2.5 2.5 2.5 2.5-1.119 2.5-2.5c0-1.381-1.119-2.5-2.5-2.5z">
+                                </path>
+                            </svg> Корзина
+                        </button>
+
+                    </div>
+
+                    <button id="loginBtn" class="nav-btn">
+                        <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path class="svg"
+                                d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <p class="login-text">Войти</p>
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="basket-section">
+            <div class="container">
+                <div class="main-wrapper-2">
+
+                    <div class="basket-counts-box">
+                        <p class="basket-item">Корзина</p>
+                        <p class="basket-count">2 товара</p>
+                    </div>
+
+                    <div class="basket-cards-box">
+
+                        <div class="basket-cards-wrapper">
+
+                            <div class="card">
+
+                                <img class="product-img"
+                                    src="https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp"
+                                    alt="">
+
+                                <div class="card-right">
+
+                                    <div class="product-items-box">
+
+                                        <div class="product-name-box">
+                                            <p class="product-name">Кормушка для домашних животных Xiaomi Smart Pet Food
+                                                Feeder 2</p>
+                                            <p class="product-brand">BRAND</p>
+                                        </div>
+
+                                        <p class="product-price">1 170 833 сум</p>
+                                    </div>
+
+                                    <div class="product-btns-box">
+                                        <button class="delete_btn">del</button>
+
+                                        <div class="add-count-box">
+
+                                            <button class="minus"><img src="./icons/minus-svgrepo-com.svg"
+                                                    alt=""></button>
+                                            <p class="count">1</p>
+                                            <button class="plus"><img src="./icons/plus-large-svgrepo-com.svg"
+                                                    alt=""></button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+
 
 
     <script src="./src/basket.js"></script>
