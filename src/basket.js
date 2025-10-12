@@ -83,6 +83,7 @@ function deleteEvent() {
             resProducts.splice(prodIndex, 1)
             console.log(resProducts);
 
+            
             localStorage.setItem(`basket`, JSON.stringify(resProducts))
 
             renderCards(resProducts, '.basket-cards-wrapper')
