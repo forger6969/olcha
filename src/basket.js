@@ -1,23 +1,23 @@
 
-const res = JSON.parse(localStorage.getItem(`basket`))
+let productsSumm = 0
+
 
 function renderCards(array, container) {
-
+    let basketCountShowText = document.querySelector(`.basket-count`)
+    basketCountShowText.textContent = array.length
 
     let box = document.querySelector(container)
     box.innerHTML = ``
-    array.forEach(prod => {
-
+    array.forEach((prod, theRealIndex) => {
         let aProd = prod.product
 
-        let theRealIndex = array.indexOf(aProd)
-        console.log(theRealIndex);
 
         let card = document.createElement(`div`)
 
 
         const price = aProd.price * 12000
         const rassrochka = price / 12
+        productsSumm += aProd.price * prod.count
 
         card.classList = `card`
 
@@ -39,7 +39,7 @@ function renderCards(array, container) {
                                     </div>
 
                                     <div class="product-btns-box">
-                                        <button data-index="${theRealIndex}" class="delete_btn">del</button>
+                                        <button data-index="${theRealIndex}" class="delete_btn"><img src="../icons/close-sm-svgrepo-com.svg" alt=""></button>
 
                                         <div class="add-count-box">
 
@@ -53,37 +53,83 @@ function renderCards(array, container) {
                                     </div>
 
                                 </div>
-
-                        
-
                         `
 
         box.append(card)
         deleteEvent()
-
+        priceRender()
     })
 }
 
-const resProducts = JSON.parse(localStorage.getItem(`basket`))
+function emptyBasket() {
+
+    const resProducts = JSON.parse(localStorage.getItem(`basket`))
+
+    if (resProducts.length === 0) {
+
+        let basketBox = document.querySelector(`.basket-box`)
+        basketBox.innerHTML = `
+    
+    <div class="empty-basket-box">
+
+                        <img class="basket-icon" src="./icons/cart.DYGF4swC.png" alt="">
+
+                        <p class="empty-basket-item-1">Корзина пуста</p>
+                        <p class="empty-basket-item-2">Но вы всегда можете ее наполнить</p>
+                        
+                        <a href="../index.html"> <button class="back-page-btn">На главную</button> </a>
+
+                    </div>
+
+    `
+    }
+
+}
+
+emptyBasket()
+
+let resProducts = JSON.parse(localStorage.getItem(`basket`))
+
 
 renderCards(resProducts, '.basket-cards-wrapper')
+console.log(productsSumm);
+
+function priceRender() {
+
+    let dostavkaPriceElement = document.querySelector(`.dostavka-price`)
+    let priceProductElement = document.querySelector(`.price-product`)
+    let zakazSummElement = document.querySelector(`.price`)
+    const summConvert = productsSumm * 12000
+    const dostavkaPrice = summConvert * 0.0010
+    const zakazSumm = summConvert + dostavkaPrice
+
+    dostavkaPriceElement.textContent = `${dostavkaPrice.toLocaleString(`RU-ru`)} сум`
+    priceProductElement.textContent = `${summConvert.toLocaleString(`RU-ru`)} сум`
+    zakazSummElement.textContent = `сумма заказа: ${zakazSumm.toLocaleString(`RU-ru`)} сум`
+
+}
+
+priceRender()
+
 
 function deleteEvent() {
 
     let deleteBtns = document.querySelectorAll(`.delete_btn`)
 
-
     deleteBtns.forEach(delbtn => {
         delbtn.onclick = () => {
+            emptyBasket()
+            priceRender()
+
+
 
             const prodIndex = +delbtn.getAttribute(`data-index`)
-            console.log(prodIndex);
-            const resProducts = JSON.parse(localStorage.getItem(`basket`))
 
-            resProducts.splice(prodIndex, 1)
-            console.log(resProducts);
+            const deletedProduct = resProducts[prodIndex]
+            console.log(deletedProduct);
 
-            
+            resProducts = resProducts.filter(res => res.product.id !== deletedProduct.product.id)
+
             localStorage.setItem(`basket`, JSON.stringify(resProducts))
 
             renderCards(resProducts, '.basket-cards-wrapper')

@@ -9,6 +9,7 @@
     font-family: "raleway";
 }
 
+
 .container {
     max-width: 100%;
     width: 90%;
@@ -336,6 +337,7 @@
     border-radius: 10px;
     padding: 10px;
     position: relative;
+    cursor: pointer;
 }
 
 .card-product-img {
@@ -493,6 +495,7 @@
     flex-direction: column;
     padding: 10px;
     gap: 20px;
+    cursor: pointer;
 }
 
 .product-img-smartphone {
@@ -844,7 +847,7 @@
     transition: 300ms all ease;
 }
 
-.add-count-btns.active{
+.add-count-btns.active {
     display: flex;
     transition: 300ms all ease;
 }
@@ -860,4 +863,145 @@
 
 .count {
     font-size: 20px;
+}
+
+
+.loader {
+    width: 130px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #da002b 90%, #0000);
+    background:
+        var(--_g) 0% 50%,
+        var(--_g) 50% 50%,
+        var(--_g) 100% 50%;
+    background-size: calc(100%/3) 50%;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    20% {
+        background-position: 0% 0%, 50% 50%, 100% 50%
+    }
+
+    40% {
+        background-position: 0% 100%, 50% 0%, 100% 50%
+    }
+
+    60% {
+        background-position: 0% 50%, 50% 100%, 100% 0%
+    }
+
+    80% {
+        background-position: 0% 50%, 50% 50%, 100% 100%
+    }
+}
+
+.loader-box {
+    background-color: rgba(255, 255, 255, 0.445);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.loader-box.active {
+    display: flex;
+}
+
+.footer {
+    background-color: #f2f2f2;
+    margin-top: 200px;
+}
+
+.links-app-item {
+    font-family: "raleway";
+    font-size: 20px;
+    color: #111111;
+    font-weight: bold;
+}
+
+.app-link {
+    width: 170px;
+}
+
+.links-app {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 450px;
+}
+
+.app-links-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-1-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 130px;
+}
+
+.footer-2-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 0;
+    border-top: 1px solid #adadad;
+}
+
+.footer-logo {
+    width: 130px;
+}
+
+.number-item {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.footer-number {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer-logo-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-1-item {
+    font-weight: 600;
+    font-size: 23px;
+    color: #da002b;
+}
+
+.list-1-link {
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+}
+
+.footer-2-section-list-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-2-link {
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+}
+
+.footer-2-section-list-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

@@ -118,3 +118,88 @@ body {
     flex-direction: column;
     width: 100%;
 }
+
+.delete_btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.zakaz-total-box {
+    background-color: white;
+    border-radius: 10px;
+    width: fit-content;
+    height: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+}
+
+.dostavka-price-text,
+.price-product-text,
+.price {
+    font-family: "roboto";
+    font-size: 25px;
+    font-weight: 600;
+    color: #da002b;
+}
+
+.dostavka-price,
+.price-product {
+    font-family: "roboto";
+}
+
+.basket-box {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    align-items: center;
+}
+
+.basket-icon {
+    width: 64px;
+}
+
+.empty-basket-item-1 {
+    font-size: 27px;
+    font-family: "raleway";
+    font-weight: 600;
+}
+
+.empty-basket-item-2 {
+    font-size: 14px;
+    font-family: "raleway";
+    font-weight: 500;
+    color: rgb(95, 94, 94);
+    text-align: center;
+}
+
+.back-page-btn {
+    background-color: #da002b;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: 300ms all ease-in-out;
+    font-family: "raleway";
+    border: 2px solid #da002b;
+}
+
+.back-page-btn:hover {
+    transition: 300ms all ease-in-out;
+    background-color: transparent;
+    color: #da002b;
+}
+
+.empty-basket-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    justify-content: center;
+    gap: 10px;
+    margin: 100px auto;
+}

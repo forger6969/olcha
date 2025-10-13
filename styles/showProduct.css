@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background-color: rgb(245, 244, 244);
+
+}
+
+.product-name {
+    font-family: "roboto";
+    font-weight: 600;
+    font-size: 32px;
+}
+
+.otziv-count-text {
+    font-family: "roboto";
+    font-weight: 500;
+    font-size: 18px;
+    color: #adadad;
+}
+
+.product-image {
+    background-color: #e7e5e5;
+    border-radius: 10px;
+    width: 350px;
+}
+
+.product-info-box {
+    display: flex;
+    gap: 50px;
+}
+
+.weight-text,
+.category-product,
+.product-stock,
+.product-rating {
+    font-size: 20px;
+    font-family: "roboto";
+    color: #6a6a6a;
+    padding-bottom: 5px;
+}
+
+.price {
+    color: #da002b;
+    font-family: "roboto";
+    font-size: 25px;
+    font-weight: 500;
+    padding-top: 50px;
+}
+
+.name-otziv-box {
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.reviewer-avatar {
+    width: 60px;
+    border-radius: 100%;
+}
+
+.review-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reviewer-name {
+    font-family: "roboto";
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.review-rating {
+    font-family: "roboto";
+    font-size: 16px;
+    font-weight: 400;
+    color: #adadad;
+}
+
+.review-date {
+    font-weight: 500;
+    font-size: 16px;
+    color: #adadad;
+}
+
+.review-rating-date {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.review-right {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.review {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    width: fit-content;
+    max-width: 500px;
+}
+
+.comment {
+    margin-top: 20px;
+    border-top: 1px solid #adadad;
+    padding: 10px;
+}
+
+.reviews-box {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 800px;
+    height: fit-content;
+    overflow-y: scroll;
+}
+
+.reviews-box::-webkit-scrollbar {
+    display: none;
+}
+
+.add-basket-btn {
+    border: #da002b 2px solid;
+    border-radius: 10px;
+    padding: 10px;
+    color: #da002b;
+    width: fit-content;
+    font-size: 20px;
+    background-color: transparent;
+    margin-top: 50px;
+    transition: 300ms all ease;
+}
+
+.add-basket-btn:hover {
+    transition: 300ms all ease;
+    background-color: #da002b;
+    color: white;
+}

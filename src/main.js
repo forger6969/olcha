@@ -66,7 +66,7 @@ async function getProducts() {
 
                 appleCard.innerHTML = `
             
-             <img class="product-img-smartphone"
+             <img data-index="${theRealIndex}" class="product-img-smartphone"
                             src="${aProd.images[0]}" alt="">
                         <p class="product-name-smartphone">${aProd.title}</p>
                         <div class="smartphone-card-price-box">
@@ -247,7 +247,7 @@ async function getProducts() {
                 let checkBasketStorageInPush = basketStorage.find(check => check.product.id === addedProduct.id)
                 console.log(basketStorage);
 
-                if (!checkBasketStorageInPush) {
+                if (addedProduct !== null) {
                     basketStorage.push({ product: addedProduct, count: 1 })
                     localStorage.setItem(`basket`, JSON.stringify(basketStorage))
                 }
@@ -274,6 +274,8 @@ async function getProducts() {
                         }
                     })
                     console.log(basketStorage);
+                    productsCount.textContent = basketStorage.length
+
 
                 }
                 minusBtn.onclick = () => {
@@ -290,6 +292,8 @@ async function getProducts() {
                         basketStorage = basketStorage.filter(basket => basket.product.id !== addedProduct.id)
                         console.log(basketStorage);
                         localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                        productsCount.textContent = basketStorage.length
+
                     }
 
                     basketStorage.map(basket => {
@@ -298,11 +302,34 @@ async function getProducts() {
                             localStorage.setItem(`basket`, JSON.stringify(basketStorage))
 
                             count.textContent = basket.count
+                            productsCount.textContent = basketStorage.length
+
                         }
                     })
                     console.log(basketStorage);
+                    productsCount.textContent = basketStorage.length
                 }
 
+            })
+        })
+
+        let allCards = document.querySelectorAll(`.product-img-smartphone`)
+        allCards.forEach(card => {
+            card.addEventListener(`click`, () => {
+
+                const productIndex = +card.getAttribute(`data-index`)
+                const product = resProducts[productIndex]
+                console.log(product);
+
+                localStorage.setItem(`showProduct`, JSON.stringify(product))
+
+                let loaderBox = document.querySelector(`.loader-box`)
+                loaderBox.classList.add(`active`)
+
+                setTimeout(() => {
+                    loaderBox.classList.remove(`active`)
+                    window.location.href = `../showProduct.html`
+                }, 2000);
             })
         })
 
