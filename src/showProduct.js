@@ -6,6 +6,8 @@ function renderPage() {
 
     let product = JSON.parse(localStorage.getItem(`showProduct`))
     console.log(product);
+    document.querySelector(`title`).textContent = `Страница товара - ${product.title}`
+
 
     let price = product.price * 12000
     console.log(price);
@@ -59,6 +61,7 @@ function renderPage() {
         console.log(date);
 
 
+
         let reviewDiv = document.createElement(`div`)
         reviewDiv.classList = `review`
         reviewDiv.innerHTML = `
@@ -90,6 +93,7 @@ function renderPage() {
     });
     productBox.append(productDiv)
 
+
 }
 
 renderPage()
@@ -117,7 +121,7 @@ addBasketBtn.addEventListener(`click`, () => {
 
     } else {
         console.log(`Продукт уже добавлен`);
-        
+
     }
 
 })

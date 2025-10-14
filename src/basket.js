@@ -1,7 +1,3 @@
-
-let productsSumm = 0
-
-
 function renderCards(array, container) {
     let basketCountShowText = document.querySelector(`.basket-count`)
     basketCountShowText.textContent = array.length
@@ -17,7 +13,6 @@ function renderCards(array, container) {
 
         const price = aProd.price * 12000
         const rassrochka = price / 12
-        productsSumm += aProd.price * prod.count
 
         card.classList = `card`
 
@@ -61,6 +56,24 @@ function renderCards(array, container) {
     })
 }
 
+let productsSumm = 0
+
+
+function priceTotal() {
+
+    let resProducts = JSON.parse(localStorage.getItem(`basket`))
+    let productsSumm = 0
+
+    resProducts.forEach(prod => {
+        productArr = prod.product
+        productsSumm += productArr.price * prod.count * 12000
+
+    })
+
+    return productsSumm
+}
+
+
 function emptyBasket() {
 
     const resProducts = JSON.parse(localStorage.getItem(`basket`))
@@ -83,7 +96,6 @@ function emptyBasket() {
 
     `
     }
-
 }
 
 emptyBasket()
@@ -95,22 +107,20 @@ renderCards(resProducts, '.basket-cards-wrapper')
 console.log(productsSumm);
 
 function priceRender() {
-
+    priceTotal()
     let dostavkaPriceElement = document.querySelector(`.dostavka-price`)
     let priceProductElement = document.querySelector(`.price-product`)
     let zakazSummElement = document.querySelector(`.price`)
-    const summConvert = productsSumm * 12000
-    const dostavkaPrice = summConvert * 0.0010
-    const zakazSumm = summConvert + dostavkaPrice
+
+    const dostavkaPrice = priceTotal() * 0.0010
+    const zakazSumm = priceTotal() + dostavkaPrice
 
     dostavkaPriceElement.textContent = `${dostavkaPrice.toLocaleString(`RU-ru`)} сум`
-    priceProductElement.textContent = `${summConvert.toLocaleString(`RU-ru`)} сум`
+    priceProductElement.textContent = `${priceTotal().toLocaleString(`RU-ru`)} сум`
     zakazSummElement.textContent = `сумма заказа: ${zakazSumm.toLocaleString(`RU-ru`)} сум`
-
 }
 
 priceRender()
-
 
 function deleteEvent() {
 
@@ -120,8 +130,6 @@ function deleteEvent() {
         delbtn.onclick = () => {
             emptyBasket()
             priceRender()
-
-
 
             const prodIndex = +delbtn.getAttribute(`data-index`)
 

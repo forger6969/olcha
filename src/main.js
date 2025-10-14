@@ -54,7 +54,6 @@ async function getProducts() {
                 let findRenderingProduct = basketStorage.find(find => find.product.id === aProd.id)
 
                 let theRealIndex = resProducts.indexOf(aProd)
-                console.log(theRealIndex);
 
 
                 let appleCard = document.createElement(`div`)
@@ -113,7 +112,6 @@ async function getProducts() {
                     }
                     minusBtn.onclick = () => {
                         let minusText = +count.textContent
-                        console.log(minusText);
 
 
                         if (minusText <= 1) {
@@ -247,10 +245,8 @@ async function getProducts() {
                 let checkBasketStorageInPush = basketStorage.find(check => check.product.id === addedProduct.id)
                 console.log(basketStorage);
 
-                if (addedProduct !== null) {
-                    basketStorage.push({ product: addedProduct, count: 1 })
-                    localStorage.setItem(`basket`, JSON.stringify(basketStorage))
-                }
+                basketStorage.push({ product: addedProduct, count: 1 })
+                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
 
                 let card = btn.closest('.smartphone-card')
                 let addCountsBtn = card.querySelector('.add-count-btns')
@@ -360,7 +356,6 @@ async function usersGET() {
     try {
         const users = await fetch(`https://dummyjson.com/users`)
         const usersRes = await users.json()
-        console.log(usersRes);
         let AllUsers = usersRes.users
 
         let emailInpit = document.querySelector(`.emailInpit`)
@@ -439,18 +434,18 @@ async function usersGET() {
 
 usersGET()
 
-// let timeBox = document.querySelector(`.tim3e-text`)
+let timeBox = document.querySelector(`.time-text`)
 
-// setInterval(() => {
-//     let date = new Date()
-//     timeBox.innerHTML = `
-//                             <span class="time" id="hour">${date.getHours()}</span>
-//                             :
-//                             <span class="time" id="minute">${date.getMinutes()}</span>
-//                             :
-//                             <span class="time" id="secund">${date.getSeconds()}</span>
-//         `
-// }, 1000);
+setInterval(() => {
+    let date = new Date()
+    timeBox.innerHTML = `
+                            <span class="time" id="hour">${date.getHours()}</span>
+                            :
+                            <span class="time" id="minute">${date.getMinutes()}</span>
+                            :
+                            <span class="time" id="secund">${date.getSeconds()}</span>
+        `
+}, 1000);
 
 const swiper = new Swiper('.swiper', {
     loop: true,
