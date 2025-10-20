@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+.env
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

@@ -1,4 +1,3 @@
-
 const userNameElement = document.querySelector(`.login-text`)
 
 if (localStorage.getItem(`loginUser`)) {
@@ -65,8 +64,8 @@ async function getProducts() {
 
                 appleCard.innerHTML = `
             
-             <img data-index="${theRealIndex}" class="product-img-smartphone"
-                            src="${aProd.images[0]}" alt="">
+                        <img data-index="${theRealIndex}" class="product-img-smartphone"
+                         src="${aProd.images[0]}" alt="">
                         <p class="product-name-smartphone">${aProd.title}</p>
                         <div class="smartphone-card-price-box">
 
@@ -81,10 +80,10 @@ async function getProducts() {
                         </div>
                         
                         <div class="add-count-btns">
-                    <button class="minus"><img src="./icons/minus-svgrepo-com.svg" alt=""></button>
-                    <p class="count"></p>
-                    <button class="plus"><img src="./icons/plus-large-svgrepo-com.svg" alt=""></button>
-                </div>
+                        <button class="minus"><img src="./icons/minus-svgrepo-com.svg" alt=""></button>
+                        <p class="count"></p>
+                        <button class="plus"><img src="./icons/plus-large-svgrepo-com.svg" alt=""></button>
+                        </div>
                         `
 
                 let count = appleCard.querySelector(`.count`)
@@ -108,6 +107,7 @@ async function getProducts() {
                             }
                         })
                         console.log(basketStorage);
+                        showBasketLengh()
 
                     }
                     minusBtn.onclick = () => {
@@ -134,6 +134,8 @@ async function getProducts() {
                             }
                         })
                         console.log(basketStorage);
+
+                        showBasketLengh()
                     }
 
                     count.textContent = findRenderingProduct.count
@@ -142,7 +144,6 @@ async function getProducts() {
 
                 appleBox.append(appleCard)
             })
-
         }
         let apple = resProducts.filter(apple => apple.brand === `Apple`)
         renderCards(apple, '.apples-cards')
@@ -210,6 +211,19 @@ async function getProducts() {
         const searchInput = document.querySelector(`.searchInput`)
         const searchBtn = document.querySelector(`.search-btn`)
 
+        let closeSearchBtn = document.querySelector(`.close-search`)
+        let openSearchInput = document.querySelector(`.serach_input`)
+        let searchPage = document.querySelector(`.search-page`)
+
+        openSearchInput.addEventListener(`click`, () => {
+            searchPage.classList.add(`active`)
+            searchInput.focus()
+        })
+
+        closeSearchBtn.addEventListener(`click`, () => {
+            searchPage.classList.remove(`active`)
+        })
+
         searchInput.addEventListener(`input`, () => {
             let searchValue = searchInput.value.toLowerCase().trim()
 
@@ -226,106 +240,141 @@ async function getProducts() {
 
         })
 
-
-        let addProductBtn = document.querySelectorAll(`.add-basket-btn`)
-        addProductBtn.forEach(btn => {
-            btn.addEventListener(`click`, () => {
-
-                let productsCount = document.querySelector('.korzina-count')
-                let basketStorage = JSON.parse(localStorage.getItem(`basket`)) || []
-                console.log(`storage:`, basketStorage);
+        window.addEventListener(`keydown`, (k) => {
+            console.log(k.key);
+            let loginBox = document.querySelector(`.login-box`)
+            let contentBox = document.querySelector(`.content`)
 
 
-                productsCount.textContent = basketStorage.length
+            if (k.key === `Escape`) {
+                console.log(`esc`);
+                searchPage.classList.remove(`active`)
+                loginBox.classList.remove('active')
+                contentBox.classList.remove(`login`)
 
-                const productIndex = btn.getAttribute(`data-index`)
-                console.log(resProducts[productIndex]);
-                let addedProduct = resProducts[productIndex]
 
-                let checkBasketStorageInPush = basketStorage.find(check => check.product.id === addedProduct.id)
-                console.log(basketStorage);
+            }
+        })
 
-                basketStorage.push({ product: addedProduct, count: 1 })
-                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+        function showBasketLengh() {
 
-                let card = btn.closest('.smartphone-card')
-                let addCountsBtn = card.querySelector('.add-count-btns')
-                let btnsBox = card.querySelector(`.smartphone-card-btn-box`)
-                let plusBtn = addCountsBtn.querySelector(`.plus`)
-                let minusBtn = addCountsBtn.querySelector(`.minus`)
-                let count = addCountsBtn.querySelector(`.count`)
+            let productsCount = document.querySelector('.korzina-count')
+            let basketStorage = JSON.parse(localStorage.getItem(`basket`)) || []
+            console.log(`storage:`, basketStorage);
+            productsCount.textContent = basketStorage.length
 
-                count.textContent = 1
-                addCountsBtn.classList.add(`active`)
-                btnsBox.style.display = `none`
+            return basketStorage.length
+        }
 
-                plusBtn.onclick = () => {
 
-                    basketStorage.map(basket => {
-                        if (basket.product.id === addedProduct.id) {
-                            basket.count++
-                            localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+        function events() {
 
-                            count.textContent = basket.count
-                        }
-                    })
+            let addProductBtn = document.querySelectorAll(`.add-basket-btn`)
+            addProductBtn.forEach(btn => {
+                btn.addEventListener(`click`, () => {
+
+
+                    let basketStorage = JSON.parse(localStorage.getItem(`basket`)) || []
+
+
+
+                    const productIndex = btn.getAttribute(`data-index`)
+                    console.log(resProducts[productIndex]);
+                    let addedProduct = resProducts[productIndex]
+
+                    let checkBasketStorageInPush = basketStorage.find(check => check.product.id === addedProduct.id)
                     console.log(basketStorage);
-                    productsCount.textContent = basketStorage.length
 
+                    basketStorage.push({ product: addedProduct, count: 1 })
+                    localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                    showBasketLengh()
 
-                }
-                minusBtn.onclick = () => {
-                    let minusText = +count.textContent
-                    console.log(minusText);
+                    let card = btn.closest('.smartphone-card')
+                    let addCountsBtn = card.querySelector('.add-count-btns')
+                    let btnsBox = card.querySelector(`.smartphone-card-btn-box`)
+                    let plusBtn = addCountsBtn.querySelector(`.plus`)
+                    let minusBtn = addCountsBtn.querySelector(`.minus`)
+                    let count = addCountsBtn.querySelector(`.count`)
 
+                    count.textContent = 1
+                    addCountsBtn.classList.add(`active`)
+                    btnsBox.style.display = `none`
 
-                    if (minusText <= 1) {
-                        addCountsBtn.classList.remove(`active`)
-                        btnsBox.style.display = `flex`
+                    plusBtn.onclick = () => {
+                        let basketStorage = JSON.parse(localStorage.getItem(`basket`)) || []
 
-                        let findAddedProductCount = basketStorage.filter(find => addedProduct.id === find.product.id)
-                        console.log(findAddedProductCount);
-                        basketStorage = basketStorage.filter(basket => basket.product.id !== addedProduct.id)
+                        basketStorage.map(basket => {
+                            if (basket.product.id === addedProduct.id) {
+                                basket.count++
+                                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+
+                                count.textContent = basket.count
+                            }
+                        })
                         console.log(basketStorage);
-                        localStorage.setItem(`basket`, JSON.stringify(basketStorage))
-                        productsCount.textContent = basketStorage.length
+                        showBasketLengh()
+                    }
+                    minusBtn.onclick = () => {
+                        let minusText = +count.textContent
+                        console.log(minusText);
 
+
+                        if (minusText <= 1) {
+                            addCountsBtn.classList.remove(`active`)
+                            btnsBox.style.display = `flex`
+
+                            let findAddedProductCount = basketStorage.filter(find => addedProduct.id === find.product.id)
+                            console.log(findAddedProductCount);
+                            basketStorage = basketStorage.filter(basket => basket.product.id !== addedProduct.id)
+                            console.log(basketStorage);
+                            localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+                            showBasketLengh()
+                        }
+
+                        basketStorage.map(basket => {
+                            if (basket.product.id === addedProduct.id) {
+                                basket.count--
+                                localStorage.setItem(`basket`, JSON.stringify(basketStorage))
+
+                                count.textContent = basket.count
+                                showBasketLengh()
+                            }
+                        })
+
+                        console.log(basketStorage);
+                        console.log(showBasketLengh());
+                        showBasketLengh()
                     }
 
-                    basketStorage.map(basket => {
-                        if (basket.product.id === addedProduct.id) {
-                            basket.count--
-                            localStorage.setItem(`basket`, JSON.stringify(basketStorage))
-
-                            count.textContent = basket.count
-                            productsCount.textContent = basketStorage.length
-
-                        }
-                    })
-                    console.log(basketStorage);
-                    productsCount.textContent = basketStorage.length
-                }
-
+                })
             })
-        })
+
+        }
+
+        events()
 
         let allCards = document.querySelectorAll(`.product-img-smartphone`)
         allCards.forEach(card => {
-            card.addEventListener(`click`, () => {
+            card.addEventListener(`click`, (e) => {
 
-                const productIndex = +card.getAttribute(`data-index`)
-                const product = resProducts[productIndex]
-                console.log(product);
 
-                localStorage.setItem(`showProduct`, JSON.stringify(product))
+                if (!e.target.classList.contains(`add-basket-btn`) && !e.target.classList.contains(`buy-rassrochka-btn`) && !e.target.classList.contains(`minus`) && !e.target.classList.contains(`plus`)) {
 
-                let loaderBox = document.querySelector(`.loader-box`)
-                loaderBox.classList.add(`active`)
+                    const productIndex = +card.getAttribute(`data-index`)
+                    const product = resProducts[productIndex]
+                    console.log(product);
 
-                setTimeout(() => {
-                    loaderBox.classList.remove(`active`)
-                    window.location.href = `../showProduct.html`
-                }, 2000);
+                    localStorage.setItem(`showProduct`, JSON.stringify(product))
+
+                    let loaderBox = document.querySelector(`.loader-box`)
+                    loaderBox.classList.add(`active`)
+
+                    setTimeout(() => {
+                        loaderBox.classList.remove(`active`)
+                        window.location.href = `../showProduct.html`
+                    }, 2000);
+
+                }
             })
         })
 
@@ -338,17 +387,7 @@ async function getProducts() {
 
 getProducts()
 
-let closeSearchBtn = document.querySelector(`.close-search`)
-let openSearchInput = document.querySelector(`.serach_input`)
-let searchPage = document.querySelector(`.search-page`)
 
-openSearchInput.addEventListener(`focus`, () => {
-    searchPage.classList.add(`active`)
-})
-
-closeSearchBtn.addEventListener(`click`, () => {
-    searchPage.classList.remove(`active`)
-})
 
 
 async function usersGET() {
@@ -392,6 +431,7 @@ async function usersGET() {
             let passwordValue = passwordInput.value
             let privacyValue = privacyBtn.checked
 
+
             let findUser = AllUsers.find(user => emailValue === user.email)
 
             if (emailValue === '' || passwordValue === ``) {
@@ -409,6 +449,9 @@ async function usersGET() {
                     notification(`Добро пожаловать ${findUser.firstName}`, `#da002b`)
                     loginBox.classList.remove(`active`)
                     contentBox.classList.remove(`login`)
+                    emailInpit.value = ``
+                    passwordInput.value = ``
+                    privacyBtn.checked = false
 
                     localStorage.setItem(`loginUser`, JSON.stringify(findUser))
 
