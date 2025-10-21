@@ -92,8 +92,8 @@ async function getProducts() {
                 let plusBtn = appleCard.querySelector(`.plus`)
                 let minusBtn = appleCard.querySelector(`.minus`)
 
-                
-                
+
+
 
                 if (findRenderingProduct) {
                     addCountsBtn.classList.add(`active`)
