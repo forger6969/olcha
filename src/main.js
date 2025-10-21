@@ -91,6 +91,8 @@ async function getProducts() {
                 let btnsBox = appleCard.querySelector(`.smartphone-card-btn-box`)
                 let plusBtn = appleCard.querySelector(`.plus`)
                 let minusBtn = appleCard.querySelector(`.minus`)
+
+                
                 
 
                 if (findRenderingProduct) {
