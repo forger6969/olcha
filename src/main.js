@@ -94,7 +94,6 @@ async function getProducts() {
 
 
 
-
                 if (findRenderingProduct) {
                     addCountsBtn.classList.add(`active`)
                     btnsBox.style.display = `none`
